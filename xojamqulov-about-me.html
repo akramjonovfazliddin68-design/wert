@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xojamqulov Nurmuhammad — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --g1: #667eea;
+    --g2: #764ba2;
+    --g3: #f093fb;
+    --g4: #f5576c;
+    --accent: #ffe066;
+    --white: #ffffff;
+    --white-70: rgba(255,255,255,0.7);
+    --white-40: rgba(255,255,255,0.4);
+    --white-20: rgba(255,255,255,0.2);
+    --white-10: rgba(255,255,255,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f0c29;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background: rgba(15,12,41,0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--g1), var(--g3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--white-70);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #fff; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 40px 60px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+  }
+
+  .orb-1 { width: 400px; height: 400px; background: var(--g1); top: -100px; right: -50px; animation: drift 8s ease-in-out infinite alternate; }
+  .orb-2 { width: 300px; height: 300px; background: var(--g3); bottom: -80px; left: -60px; animation: drift 10s ease-in-out infinite alternate-reverse; }
+
+  @keyframes drift {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(30px, 20px) scale(1.05); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white-10);
+    border: 1px solid var(--white-20);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--white-70);
+    letter-spacing: 0.5px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-tag-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 8px #4ade80;
+    animation: pulse-dot 2s infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+  }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .hero-name span {
+    background: linear-gradient(90deg, #fff 0%, var(--g3) 50%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-role {
+    font-size: 16px;
+    color: var(--white-70);
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    color: var(--white-70);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, var(--g1), var(--g2));
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 26px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 32px rgba(102,126,234,0.4);
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(102,126,234,0.6);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--white-10);
+    border: 1px solid var(--white-20);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    transition: background 0.2s;
+  }
+
+  .btn-ghost:hover { background: var(--white-20); }
+
+  /* ── SECTION ── */
+  section { padding: 80px 40px; }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #fff;
+    margin-bottom: 28px;
+  }
+
+  .section-sub {
+    font-size: 14px;
+    color: var(--white-70);
+    line-height: 1.7;
+    max-width: 450px;
+    margin-bottom: 44px;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: linear-gradient(180deg, #0f0c29 0%, #1a1240 100%);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    max-width: 900px;
+  }
+
+  .about-image {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 24px;
+    background: linear-gradient(135deg, var(--g1) 0%, var(--g2) 50%, var(--g3) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+  }
+
+  .about-text { }
+
+  .about-bio {
+    font-size: 14px;
+    color: var(--white-70);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .info-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .info-key {
+    font-size: 10px;
+    color: var(--white-40);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .info-val {
+    font-size: 13px;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  /* ── SKILLS ── */
+  #skills {
+    background: linear-gradient(180deg, #1a1240 0%, #0f0c29 100%);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 700px;
+  }
+
+  .skill-card {
+    background: var(--white-10);
+    border: 1px solid var(--white-10);
+    border-radius: 16px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s, border-color 0.2s;
+    position: relative;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .skill-card.purple::before { background: linear-gradient(90deg, var(--g1), var(--g2)); }
+  .skill-card.pink::before   { background: linear-gradient(90deg, var(--g3), var(--g4)); }
+
+  .skill-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--white-20);
+  }
+
+  .skill-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .skill-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .skill-desc {
+    font-size: 12px;
+    color: var(--white-70);
+    line-height: 1.5;
+  }
+
+  /* ── SOCIALS ── */
+  #contact {
+    background: linear-gradient(135deg, #302b63 0%, #0f0c29 50%, #24243e 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #contact .orb { opacity: 0.3; }
+
+  .contact-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .contact-email {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 8px;
+    word-break: break-all;
+  }
+
+  .contact-phone {
+    display: block;
+    font-size: 18px;
+    color: var(--white-70);
+    margin-bottom: 24px;
+  }
+
+  .contact-phone strong { color: #fff; font-weight: 600; }
+
+  .socials {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  .social-btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--white-10);
+    border: 1px solid var(--white-20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    backdrop-filter: blur(10px);
+  }
+
+  .social-btn:hover {
+    background: var(--white-20);
+    transform: translateY(-2px);
+  }
+
+  .contact-note {
+    font-size: 12px;
+    color: var(--white-40);
+    margin-top: 24px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080613;
+    text-align: center;
+    padding: 20px 40px;
+    font-size: 12px;
+    color: var(--white-40);
+    border-top: 1px solid var(--white-10);
+  }
+
+  footer span {
+    background: linear-gradient(90deg, var(--g1), var(--g3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+  }
+
+  /* ── REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { gap: 14px; }
+    section { padding: 60px 20px; }
+    .hero { padding: 80px 20px 50px; }
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">XN</div>
+  <ul class="nav-links">
+    <li><a href="#about">Haqimda</a></li>
+    <li><a href="#skills">Bilim</a></li>
+    <li><a href="#contact">Aloqa</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      IT LIVE ACADEMY O'QUVCHISI
+    </div>
+    <h1 class="hero-name">
+      <span>Xojamqulov<br>Nurmuhammad</span>
+    </h1>
+    <p class="hero-role">
+      Web Developer | CSS, JavaScript o'rganyapman
+    </p>
+    <p class="hero-desc">
+      Guliston shahrida yashayman. Zamonaviy veb texnologiyalarni o'rganib, chiroyli saytlar yaratmoqchi bo'lgan o'quvchiman.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        Bog'lanish
+      </a>
+      <a href="#skills" class="btn-ghost">
+        Bilim ko'rish
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image reveal">
+      <img width="500" height="500 " src="./img/photo_2026-06-27_14-06-32.jpg" alt="">
+    </div>
+    <div class="about-text reveal">
+      <h2 class="section-title">Assalomu alaykum! 👋</h2>
+      <p class="about-bio">
+        Men Xojamqulov Nurmuhammad, Guliston shahrida yashayman. Hozirda IT LIVE ACADEMY'da veb-dasturlashni o'rganmoqdaman.
+      </p>
+      <p class="about-bio">
+        Frontend texnologiyalariga qiziqib, ayniqsa CSS va JavaScript ga e'tibor bermoqdaman. Har kuniga o'rganib, yangi narsa qilishni xohlayman.
+      </p>
+      <ul class="info-list">
+        <li class="info-item">
+          <span class="info-key">Ism</span>
+          <span class="info-val">Nurmuhammad</span>
+        </li>
+        <li class="info-item">
+          <span class="info-key">Shahar</span>
+          <span class="info-val">Guliston</span>
+        </li>
+        <li class="info-item">
+          <span class="info-key">Tahsil</span>
+          <span class="info-val">IT LIVE Academy</span>
+        </li>
+        <li class="info-item">
+          <span class="info-key">Status</span>
+          <span class="info-val" style="color:#4ade80">● O'quvchi</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 class="section-title">Nima o'rgandim?</h2>
+  <p class="section-sub">Hozir o'rganayotgan va asoslarini biladigan texnologiyalar.</p>
+
+  <div class="skills-grid">
+    <div class="skill-card purple reveal">
+      <div class="skill-icon">🎨</div>
+      <div class="skill-name">HTML & CSS</div>
+      <div class="skill-desc">Saytlarning struktura va dizaynini o'rganmoqdaman. Responsive design haqida biladim.</div>
+    </div>
+
+    <div class="skill-card pink reveal" style="transition-delay:0.1s">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-desc">Dinamik saytlar yaratish uchun JavaScript asoslarini o'rganmoqdaman.</div>
+    </div>
+
+    <div class="skill-card purple reveal" style="transition-delay:0.2s">
+      <div class="skill-icon">🎯</div>
+      <div class="skill-name">Figma</div>
+      <div class="skill-desc">UI/UX dizaynning asoslarini o'rganib, prototype yaratmoqdaman.</div>
+    </div>
+
+    <div class="skill-card pink reveal" style="transition-delay:0.3s">
+      <div class="skill-icon">📚</div>
+      <div class="skill-name">Amaliy Loyihalar</div>
+      <div class="skill-desc">O'rganayotgan narsalarimni joyida qo'llab, kichik loyihalar yaratmoqdaman.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="contact-inner reveal">
+    <h2 class="section-title">Men bilan bog'lanish</h2>
+    
+    <div class="contact-phone">
+      <strong>☎️ +998 87 023 1318</strong>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <a href="tel:+998870231318" class="btn-primary" style="display:inline-flex">
+        Qo'ng'iroq qilish
+      </a>
+    </div>
+
+    <p class="section-sub" style="margin-bottom: 20px;">Instagram va Telegram'da topishingiz mumkin:</p>
+
+    <div class="socials">
+      <a href="https://web.telegram.org/k/" class="social-btn" title="Instagram">📷</a>
+      <a href="https://telegram.org" class="social-btn" title="Telegram">✈️</a>
+    </div>
+
+    <p class="contact-note">
+      O'quvchilikka shoshilmang, savol bo'lsa so'rasang — javob berishga tayyor!
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 <span>Xojamqulov Nurmuhammad</span> — Guliston, O'zbekiston
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
